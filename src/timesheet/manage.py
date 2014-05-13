@@ -1,6 +1,10 @@
 #!/usr/bin/env python
-import os
-import sys
+import os, sys
+
+IMPORT_HOME = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", ".."))
+sys.path.append(os.path.join(IMPORT_HOME, 'src'))
+sys.path.append(os.path.join(IMPORT_HOME, 'src/timesheet'))
+sys.path.append(os.path.join(IMPORT_HOME, 'src/data_apps'))
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")

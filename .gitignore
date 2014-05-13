@@ -1,3 +1,6 @@
 *pyc
 src/venv
 src/timesheet/local_settings.py
+src/timesheet/.#settings.py
+*#
+*~
