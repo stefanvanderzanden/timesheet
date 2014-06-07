@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Inloggen | Timesheet HFM{% endblock %}
+
+{% block content %}
+
+<div id="login-form-container">
+  <div id="logo-hfm">
+    <img src="{{STATIC_URL }}media/LogoHFMcorporate.png" alt="" />
+  </div>
+  {% if form.errors %}
+  <p>Je gebruikersnaam en wachtwoord kwamen niet overeen</p>
+  {% endif %}
+  <h1>Timesheet HFM | Inloggen</h1>
+  <form method="post" action="">
+  {% csrf_token %}
+    <table >
+    <tr>
+        <td class="login-label">{{ form.gebruikersnaam.label_tag }}</td>
+        <td class="login-input">{{ form.gebruikersnaam }}</td>
+    </tr>
+    <tr>
+        <td class="login-label">{{ form.wachtwoord.label_tag }}</td>
+        <td class="login-input">{{ form.wachtwoord }}</td>
+    </tr>
+    </table>
+    <div id="login-button-container">
+      <input type="submit" value="login"/>
+    </div>
+</form>
+</div>
+{% endblock %}

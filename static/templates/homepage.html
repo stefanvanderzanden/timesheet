@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Homepage | Timesheet HFM{% endblock %}
+
+{% block content %}
+<div id="">
+  {% for project in projects %}
+    {{project.titel}}
+  {% endfor %}
+<h1>Lijst met Sprints</h1>
+<h2>En per sprint de projecten</h2>
+<h3>Waar ik vervolgens per project (bijv. maatwerk BVO) uit kan splitsen welke deeltaken er bij komen kijken.</h3>
+</div>
+{% endblock %}
+

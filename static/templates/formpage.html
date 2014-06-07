@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Homepage | Timesheet HFM{% endblock %}
+
+{% block content %}
+<div id="">
+  {% if form.errors %}
+  {% for error in form.errors %}
+      {{ error }}
+  {% endfor %}
+  {% endif %}
+  <form method="post" action="">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td><label for="id_titel">Titel</label></td>
+      <td>{{form.titel}}</td>
+    </tr>
+    <tr>
+      <td><label for="id_beschrijving">Beschrijving</label></td>
+      <td>{{form.beschrijving}}</td>
+    </tr>
+    <tr>
+      <td><label for="id_deadline">Deadline</label></td>
+      <td>{{form.deadline}}</td>
+    </tr>
+    <tr>
+      <td><label for="id_sprint">Sprint</label></td>
+      <td>{{form.sprint}}</td>
+    </tr>
+  </table>
+  <input type="submit" value="submit" />
+  </form>
+</div>
+{% endblock %}
+

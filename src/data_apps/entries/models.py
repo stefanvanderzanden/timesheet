@@ -1,41 +1,43 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 class Sprint(models.Model):
-    title = models.CharField(max_length=50)
-    description = models.TextField()
-    deadline = models.DateField()
+    titel = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return '%s' % self.titel
+    
 class Comment(models.Model):
     text = models.TextField()
     sprint = models.ForeignKey(Sprint, related_name='comment_sprint')
+    datetime = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.datetime
+
+class Project(models.Model):
+    titel = models.CharField(max_length=50)
+    beschrijving = models.TextField()
+    deadline = models.DateField()
+    #assignee = models.ForeignKey(User, related_name='project_assignee')
+    sprint = models.ForeignKey(Sprint, related_name='project_sprint')
+
+    def __unicode__(self):
+        return '%s' % self.titel
     
+class DeelTaak(models.Model):
+    titel = models.CharField(max_length=50)
+    beschrijving = models.TextField()
+    project = models.ForeignKey(Project, related_name='deeltaak_project')
 
-class Issue(models.Model):
+    def __unicode__(self):
+        return '%s' % self.titel
 
-    URGENCY = (
-        ('1', 'Laag'),
-        ('2', 'Medium'),
-        ('3', 'Hoog'),
-    )
+class TijdEntry(models.Model):
+    titel = models.CharField(max_length=50)
+    beschrijving = models.TextField()
+    tijdsbesteding = models.FloatField()
+    deeltaak = models.ForeignKey(DeelTaak, related_name='tijdentry_deeltaak')
 
-    STATUS = (
-        ('1', 'Ontwikkeld'),
-        ('2', 'Getest'), 
-     )
-
-    sprint = models.ForeignKey(Sprint, related_name='issue_sprint')
-    title = models.CharField(max_length=50)
-    description = models.TextField()
-    urgency = models.CharField(max_length=1, choices=URGENCY)
-    submitter = models.ForeignKey(User, related_name='submitter')
-    assignee = models.ForeignKey(User, related_name='assignee')
-    estimated_time = models.IntegerField()
-    spend_time = models.IntegerField()
-    status = models.CharField(max_length=1, choices=STATUS)
-
-
-
-
+    def __unicode__(self):
+        return '%s' % self.titel

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
+{% load url from future %}
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{%block title %}{%endblock%}</title>
+                <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<div class="page-wrap">
+		  {% if user.is_authenticated %}
+			<div id="header">
+				<div id="header-container">
+				  {{user.username}} <br />
+				  <a href="{% url 'entries.views.logout_view'%}">Uitloggen</a>
+				</div>
+			</div>
+			{% endif %}
+			<div id="main-container">
+				{% block content %} {% endblock %}
+			</div>
+		</div>
+		<div id="footer-container">
+			{% block footer %}
+			{% endblock %}
+		</div>
+	</body>
+</html>
