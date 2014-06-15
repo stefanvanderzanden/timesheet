@@ -6,16 +6,48 @@ html {
 }
 
 body {
-    background-color: #eee;
+    /*background-color: #eee;*/
     margin:0;
     padding: 0;
 }
 
 #header {
-    padding: 10px;
-    margin: 0px;
-    height: 40px;
-    background-color: #ddd;
+    height: 25px;
+    padding-top: 5px;
+    background: #fcfff4; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fcfff4 0%, #e9e9ce 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(100%,#e9e9ce)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fcfff4 0%,#e9e9ce 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fcfff4 0%,#e9e9ce 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fcfff4 0%,#e9e9ce 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fcfff4 0%,#e9e9ce 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=0 ); /* IE6-9 */
+}
+
+#header-container {
+    text-align: right;
+    width: 800px; 
+    margin: 0px auto;
+    
+}
+
+#username-logout {
+    width: 100%;
+}
+
+#username {
+    text-align: right;
+    
+}
+
+#logout {
+    text-align: right;
+    width: 75px;
+}
+
+#main-container {
+    margin: 0px auto;
+    width: 800px;
 }
 
 /*LOGINPAGINA*/
@@ -84,3 +116,167 @@ body {
 }
 
 /*HOMEPAGE*/
+#navigatie {
+    margin-top: 70px;
+    height: 40px;
+    background: #fcfff4; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fcfff4 0%, #e9e9ce 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(100%,#e9e9ce)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fcfff4 0%,#e9e9ce 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fcfff4 0%,#e9e9ce 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fcfff4 0%,#e9e9ce 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fcfff4 0%,#e9e9ce 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=0 ); /* IE6-9 */
+
+}
+
+#navigatie-container {
+    width: 800px;
+    margin: 0px auto;
+    height: 34px;
+}
+
+#navigatie-list {
+    height: 40px;
+    list-style: none;
+    padding-left: 0px;
+    display: block;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+}
+
+#navigatie-list li {
+    float: left;
+    display: table-cell;
+    text-align: center;
+    height: 27px;
+    vertical-align: middle;
+    padding-top: 13px;
+}
+.first-item {
+    width: 150px;
+}
+
+.middle-item {
+    width: 150px;
+    border-left: 1px solid grey;
+}
+
+.last-item {
+    width: 194px;
+    border-left: 1px solid grey
+}
+
+#navigatie-list li:hover {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #eee;
+}
+
+#navigatie-list li a { 
+    text-decoration: none;
+    color: black;
+}
+
+#project-container {
+    clear: both;
+    padding-top: 20px;
+}
+
+#project-list-header {
+    width: 800px;
+    margin-top: 20px;
+    border: 1px solid grey;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#project-titel a {
+    font-size: 16px;
+    color: #F36F21;
+    text-align: left;
+    text-decoration: none;
+}
+
+#project-titel a:hover { 
+    text-decoration: underline;
+}
+
+#project-nieuwe-deeltaak {
+    text-align: right;
+}
+
+#project-nieuwe-deeltaak a {
+    text-decoration: none;
+    color: #F36F21;
+}
+
+#project-nieuwe-deeltaak a:hover {
+    text-decoration: underline;
+}
+#project-list-content {
+    width: 800px;
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: #fefcea; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fefcea 0%, #f1da36 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefcea), color-stop(100%,#f1da36)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fefcea 0%,#f1da36 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fefcea 0%,#f1da36 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fefcea 0%,#f1da36 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fefcea 0%,#f1da36 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=0 ); /* IE6-9 */
+
+
+}
+.project-label {
+    width: 100px;
+    font-weight: bold;
+}
+
+
+/***************FORM PAGE ********************************/
+#form-table {
+    margin-top: 40px;
+}
+
+#form-table-header {
+    width: 800px;
+    margin-top: 40px;
+    border-spacing: 0px;
+}
+
+#form-table-header tr td {
+    border: 1px solid grey;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #e9e9ce;
+    font-size: 16px;
+    padding: 5px;
+    height: 45px;
+    
+}
+
+#form-table-content {
+    width: 800px;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    border-spacing: 0px;
+}

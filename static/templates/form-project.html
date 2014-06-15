@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Project
+        {% if mode == 'toevoegen' %}
+            toevoegen
+        {% else %}
+            bewerken
+        {% endif %}
+    | Timesheet HFM
+{% endblock %}
+
+{% block content %}
+<div id="">
+  {% if form.errors %}
+  {% for error in form.errors %}
+      {{ error }}
+  {% endfor %}
+  {% endif %}
+  <form method="post" action="">
+  {% csrf_token %}
+  <table id="form-table-header">
+    <tr>
+      <td>
+	Project
+        {% if mode == 'toevoegen' %}
+            toevoegen
+        {% else %}
+            bewerken
+        {% endif %}
+      </td>
+    </tr>
+  </table>
+  <table id="form-table-content">
+    <tr>
+      <td><label for="id_titel">Titel</label></td>
+      <td>{{form.titel}}</td>
+    </tr>
+    <tr>
+      <td><label for="id_beschrijving">Beschrijving</label></td>
+      <td>{{form.beschrijving}}</td>
+    </tr>
+    <tr>
+      <td><label for="id_project">Sprint</label></td>
+      <td>{{form.sprint}}</td>
+    </tr>
+    <tr>
+      <td><label for="id_deadline">Deadline</label></td>
+      <td>{{form.deadline}}</td>
+    </tr>
+  </table>
+  <input type="submit" value="submit" />
+  </form>
+</div>
+{% endblock %}
+

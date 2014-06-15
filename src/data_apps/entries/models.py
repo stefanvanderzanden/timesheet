@@ -19,7 +19,6 @@ class Project(models.Model):
     titel = models.CharField(max_length=50)
     beschrijving = models.TextField()
     deadline = models.DateField()
-    #assignee = models.ForeignKey(User, related_name='project_assignee')
     sprint = models.ForeignKey(Sprint, related_name='project_sprint')
 
     def __unicode__(self):
@@ -29,6 +28,7 @@ class DeelTaak(models.Model):
     titel = models.CharField(max_length=50)
     beschrijving = models.TextField()
     project = models.ForeignKey(Project, related_name='deeltaak_project')
+    verwachte_tijd = models.FloatField()
 
     def __unicode__(self):
         return '%s' % self.titel
@@ -36,7 +36,7 @@ class DeelTaak(models.Model):
 class TijdEntry(models.Model):
     titel = models.CharField(max_length=50)
     beschrijving = models.TextField()
-    tijdsbesteding = models.FloatField()
+    tijdbesteding = models.FloatField()
     deeltaak = models.ForeignKey(DeelTaak, related_name='tijdentry_deeltaak')
 
     def __unicode__(self):

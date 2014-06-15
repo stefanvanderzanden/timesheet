@@ -3,13 +3,52 @@
 {% block title %}Homepage | Timesheet HFM{% endblock %}
 
 {% block content %}
-<div id="">
+<div id="project-container">
   {% for project in projects %}
-    {{project.titel}}
+  <table id="project-list-header">
+    <tr>
+      <td id="project-titel"><a href="{% url 'entries.views.form' 'project' project.id %}">{{project.titel}}</a></td>
+      <td id="project-nieuwe-deeltaak"><a href="{% url 'entries.views.form' 'deeltaak' %}">Nieuwe deeltaak</a></td>
+      <td id="project-nieuwe-deeltaak"><a href="{% url 'entries.views.form'  'tijdbesteding'%}">Nieuwe tijdbesteding</a></td>
+    </tr>
+  </table>
+  <table id="project-list-content">
+    <tr>
+      <td class="project-label">Beschrijving</td>
+      <td id="project-beschrijving">{{project.beschrijving}}</td>
+    </tr>
+    <tr>
+      <td class="project-label">Deadline</td>
+      <td id="project-deadline">{{project.deadline}}</td>
+    </tr>
+    <tr>
+      <td class="project-label">Sprint</td>
+      <td id="project-deadline">{{project.sprint}}</td>
+    </tr>
+    <tr>
+      <td class="project-label">Benodigde tijd</td>
+      <td id="project-tijdsbesteding">{{project.verwacht}}</td>
+    </tr>
+    <tr>
+      <td class="project-label">Besteedde tijd</td>
+      <td id="project-tijdsbesteding">{{project.besteed}}</td>
+    </tr>
+    <tr>
+      <td class="project-label">Voortgang</td>
+      <td id="project-tijdsbesteding">{{project.percentage}}%</td>
+    </tr>
+    <!--<tr>
+      <td class="project-label">Deeltaken</td>
+      <td>
+	<ul>
+	  {% for d in project.deeltaak_project.all %}
+	  <li>1</li>
+	  {% endfor %}
+	</ul>
+      </td>
+    </tr>-->
+  </table>
   {% endfor %}
-<h1>Lijst met Sprints</h1>
-<h2>En per sprint de projecten</h2>
-<h3>Waar ik vervolgens per project (bijv. maatwerk BVO) uit kan splitsen welke deeltaken er bij komen kijken.</h3>
 </div>
 {% endblock %}
 

@@ -12,9 +12,25 @@
 		  {% if user.is_authenticated %}
 			<div id="header">
 				<div id="header-container">
-				  {{user.username}} <br />
-				  <a href="{% url 'entries.views.logout_view'%}">Uitloggen</a>
+				  <table id="username-logout">
+				    <tr>
+				      <td id="username">{{user.username}}</td>
+				      <td id="logout"><a href="{% url 'entries.views.logout_view'%}">Uitloggen</a></td>
+				    </tr>
+				  </table>
 				</div>
+			</div>
+			<div id="navigatie">
+			  <div id="navigatie-container">
+			    <ul id="navigatie-list">
+
+			      <li class="first-item"><a href="{% url 'entries.views.home' %}">Home</a></li>
+			      <li class="middle-item"><a href="{% url 'entries.views.form' 'sprint' %}">Nieuwe sprint</a></li>
+			      <li class="middle-item"><a href="{% url 'entries.views.form' 'project' %}">Nieuw project</a></li>
+			      <li class="middle-item"><a href="{% url 'entries.views.form' 'deeltaak' %}">Nieuwe deeltaak</a></li>
+			      <li class="last-item"><a href="{% url 'entries.views.form' 'tijdbesteding' %}">Nieuwe tijdentrie</a></li>
+			    </ul>
+			  </div>
 			</div>
 			{% endif %}
 			<div id="main-container">
