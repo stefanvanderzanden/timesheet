@@ -1,0 +1,121 @@
+=====STAP 1=====
+Set up networking (selinux, /etc/sysconfig/network-scripts/ifcfg-eth0
+
+
+=====STAP 2=====
+Update sudoers file
+
+
+=====STAP 3=====
+yum -y update
+
+
+=====STAP 4=====
+install packages
+- mysql-server
+- mysql-devel
+- httpd
+- mod_ssl
+- mod_wsgi
+- rpm -ivh http://fedora.mirror.ac.za/epel/6/i386/epel-release-6-8.noarch.rpm
+- git
+- gettext
+- gcc
+- gcc-c++
+- python-devel
+- python-virtualenv
+- java-1.7.0-openjdk
+
+
+=====STAP 5=====
+Change /etc/sysconfig/iptables
+Add: -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+
+Before the REJECT statement
+
+
+=====STAP 6=====
+Setup MySQL 
+- chkconfig msqld on
+- /usr/bin/mysql_secure_installation
+- create database timesheet
+- create user timesheet
+
+====STAP 7======
+HTTPD config
+- chkconfig httpd on
+
+
+====STAP 8======
+Add user and permissions
+
+- useradd -d /home/stefan -m -s /bin/bash -G wheel -U stefan
+- passwd stefan
+
+- chmod 770 /home/stefan
+- usermod -a -G stefan apache
+
+
+====STAP 9======
+Download git
+- git clone https://github.com/stefanvanderzanden/timesheet.git timesheet
+
+
+====STAP 10=====
+Setup VENV (in src folder)
+- virtualenv --no-site-packages venv
+- . ./venv/bin/activate
+
+====STAP 11=====
+Install requirements
+- pip install -r requirements
+
+
+====STAP 12=====
+Manage.py commands
+- python manage.py syncdb
+- python manage.py migrate
+- python manage.py collectstatic --noinput
+
+====STAP 13=====
+create timesheet.conf 
+- nano /etc/httpd/conf.d/timesheet.conf (content below)
+
+
+<VirtualHost *:80>
+   #ServerName *.timesheet.com
+   ServerAdmin root@localhost
+   DocumentRoot /var/www/html
+
+   Alias /media /home/stefan/timesheet/media
+   <Directory /home/stefan/timesheet/media>
+      Order deny,allow
+      Allow from all
+   </Directory>
+
+   Alias /static /home/stefan/timesheet/static
+   <Directory /home/stefan/timesheet/static>
+      Order deny,allow
+      Allow from all
+   </Directory>
+
+   WSGIDaemonProcess timesheet processes=2 threads=1 display-name=%{GROUP}
+   WSGIProcessGroup timesheet
+   WSGIApplicationGroup %{GLOBAL}
+   WSGIImportScript /home/stefan/timesheet/src/timesheet.wsgi process-group=timesheet application-group=%{GLOBAL}
+   WSGIScriptAlias / /home/stefan/timesheet/src/timesheet.wsgi/
+
+   <Directory /home/stefan/timesheet>
+       Order deny,allow
+       Allow from all
+   </Directory>
+
+</VirtualHost>
+
+====STAP 14=====
+- chown apache:root /var/log/httpd
+- chmod 775 /var/log/httpd
+
+====STAP 15=====
+restart httpd
+- service httpd restart
